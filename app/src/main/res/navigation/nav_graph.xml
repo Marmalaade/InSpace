@@ -8,4 +8,12 @@
         android:id="@+id/mainPicture"
         android:name="com.example.inspace.mainastronomicalpicture.MainPicture"
         android:label="MainPicture" />
+    <fragment
+        android:id="@+id/earthCamera"
+        android:name="com.example.inspace.earthcamera.EarthCamera"
+        android:label="EarthCamera" />
+    <fragment
+        android:id="@+id/marsEstate"
+        android:name="com.example.inspace.marsestate.MarsEstate"
+        android:label="MarsEstate" />
 </navigation>

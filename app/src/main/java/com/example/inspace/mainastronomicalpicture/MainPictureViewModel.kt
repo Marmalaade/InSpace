@@ -4,14 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MainPictureApi
-import com.example.inspace.network.MainPictureProperty
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class MainPictureViewModel : ViewModel() {
 
     private val _response = MutableLiveData<String>()
+    private val viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     val response: LiveData<String>
         get() = _response
@@ -21,14 +23,20 @@ class MainPictureViewModel : ViewModel() {
     }
 
     private fun getMainPictureData() {
-        MainPictureApi.retrofitService.getProperties().enqueue(object : Callback<MainPictureProperty> {
-            override fun onFailure(call: Call<MainPictureProperty>, t: Throwable) {
-                _response.value = "Failure: " + t.message
+        coroutineScope.launch {
+            val getPropertiesDeferred = MainPictureApi.retrofitService.getPropertiesAsync()
+            try {
+                val result = getPropertiesDeferred.await()
+                _response.value = result.title
+            } catch (t: Throwable) {
+                _response.value = "Failure:" + t.message
             }
+        }
 
-            override fun onResponse(call: Call<MainPictureProperty>, response: Response<MainPictureProperty>) {
-                _response.value = response.body()?.title
-            }
-        })
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

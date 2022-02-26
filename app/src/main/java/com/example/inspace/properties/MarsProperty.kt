@@ -1,4 +1,4 @@
-package com.example.inspace.network
+package com.example.inspace.properties
 
 import com.squareup.moshi.Json
 

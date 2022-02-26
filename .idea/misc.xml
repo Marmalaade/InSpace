@@ -7,6 +7,7 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable-v24/ic_connection_error.xml" value="0.11510416666666666" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable-v24/loading_img.xml" value="0.11510416666666666" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.13518518518518519" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_broken_image.xml" value="0.12407407407407407" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/loading_img.xml" value="0.12407407407407407" />
@@ -14,7 +15,8 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_main_picture.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_mars_estate.xml" value="0.2" />
-        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/menu/overflow_menu.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/menu/button_nav_menu.xml" value="0.21851851851851853" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/menu/overflow_menu.xml" value="0.2" />
       </map>
     </option>
   </component>

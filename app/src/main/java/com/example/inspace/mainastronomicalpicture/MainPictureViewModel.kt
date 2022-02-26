@@ -1,12 +1,10 @@
 package com.example.inspace.mainastronomicalpicture
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MainPictureApi
-import com.example.inspace.network.MainPictureProperty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

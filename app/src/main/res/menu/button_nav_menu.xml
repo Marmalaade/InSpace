@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainPicture"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/main_picture_item" />
+    <item
+        android:id="@+id/marsEstate"
+        android:icon="@drawable/ic_baseline_place_24"
+        android:title="@string/mars_photo_item" />
+    <item
+        android:id="@+id/earthCamera"
+        android:icon="@drawable/ic_baseline_camera_24"
+        android:title="@string/earth_photo_item" />
+</menu>

@@ -1,5 +1,6 @@
 package com.example.inspace.network
 
+import com.example.inspace.properties.MainPictureProperty
 import com.example.inspace.retrofitobject.RetrofitObjectInitialization
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET

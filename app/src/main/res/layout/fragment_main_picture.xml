@@ -34,7 +34,7 @@
             android:layout_marginBottom="@dimen/tittle_padding"
             android:text="@{earthViewModel.displayData.first}"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

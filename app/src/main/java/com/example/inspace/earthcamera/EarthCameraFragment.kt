@@ -11,7 +11,7 @@ import com.example.inspace.databinding.FragmentEarthCameraBinding
 import com.example.inspace.databinding.FragmentMarsEstateBinding
 import com.example.inspace.marsestate.MarsEstateViewModel
 
-class EarthCamera : Fragment() {
+class EarthCameraFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -10,7 +10,7 @@ import com.example.inspace.R
 import com.example.inspace.databinding.FragmentMainPictureBinding
 
 
-class MainPicture : Fragment() {
+class MainPictureFragment : Fragment() {
 
     private val viewModel: MainPictureViewModel by lazy {
         ViewModelProvider(this)[MainPictureViewModel::class.java]

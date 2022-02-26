@@ -1,9 +1,12 @@
 package com.example.inspace.mainastronomicalpicture
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MainPictureApi
+import com.example.inspace.network.MainPictureProperty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,12 +14,11 @@ import kotlinx.coroutines.launch
 
 class MainPictureViewModel : ViewModel() {
 
-    private val _response = MutableLiveData<String>()
     private val viewModelJob = Job()
+    private val _displayData = MutableLiveData<Pair<String, String>>()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-    val response: LiveData<String>
-        get() = _response
+    val displayData: LiveData<Pair<String, String>>
+        get() = _displayData
 
     init {
         getMainPictureData()
@@ -27,9 +29,10 @@ class MainPictureViewModel : ViewModel() {
             val getPropertiesDeferred = MainPictureApi.retrofitService.getPropertiesAsync()
             try {
                 val result = getPropertiesDeferred.await()
-                _response.value = result.title
+                _displayData.value = Pair(result.title, result.img_url)
+
             } catch (t: Throwable) {
-                _response.value = "Failure:" + t.message
+                Log.e("Failure", "${t.message}")
             }
         }
 

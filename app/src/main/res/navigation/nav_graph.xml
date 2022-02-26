@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/mainPicture"
-        android:name="com.example.inspace.mainastronomicalpicture.MainPicture"
+        android:name="com.example.inspace.mainastronomicalpicture.MainPictureFragment"
         android:label="MainPicture" />
     <fragment
         android:id="@+id/earthCamera"
-        android:name="com.example.inspace.earthcamera.EarthCamera"
+        android:name="com.example.inspace.earthcamera.EarthCameraFragment"
         android:label="EarthCamera" />
     <fragment
         android:id="@+id/marsEstate"
-        android:name="com.example.inspace.marsestate.MarsEstate"
+        android:name="com.example.inspace.marsestate.MarsEstateFragment"
         android:label="MarsEstate" />
 </navigation>

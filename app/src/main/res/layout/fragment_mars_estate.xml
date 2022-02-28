@@ -16,16 +16,24 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/mars_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mars_photos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            android:padding="@dimen/recycler_item_padding"
             android:scaleType="centerCrop"
-            app:imageUrl="@{viewModel.property.imgSrcUrl}"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{viewModel.properties}"
+            app:spanCount="3"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:itemCount="14"
+            tools:listitem="@layout/grid_view_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

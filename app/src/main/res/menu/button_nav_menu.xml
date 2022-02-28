@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/main_picture_item" />
     <item
-        android:id="@+id/marsEstate"
+        android:id="@+id/marsEstates"
         android:icon="@drawable/ic_baseline_place_24"
         android:title="@string/mars_photo_item" />
     <item

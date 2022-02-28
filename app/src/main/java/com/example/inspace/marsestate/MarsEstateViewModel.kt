@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MarsApi
+import com.example.inspace.properties.MarsPropertyItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,12 +12,12 @@ import kotlinx.coroutines.launch
 
 class MarsEstateViewModel : ViewModel() {
 
-    private val _response = MutableLiveData<String>()
+    private val _property = MutableLiveData<MarsPropertyItem>()
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    val response: LiveData<String>
-        get() = _response
+    val property: LiveData<MarsPropertyItem>
+        get() = _property
 
     init {
         getMarsEstateProperties()
@@ -26,11 +27,11 @@ class MarsEstateViewModel : ViewModel() {
         coroutineScope.launch {
             val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
             try {
-                val resultList = getPropertiesDeferred.await()
-                _response.value = "${resultList.size}}"
-
+                if (getPropertiesDeferred.isNotEmpty()) {
+                    _property.value = getPropertiesDeferred[0]
+                }
             } catch (t: Throwable) {
-                _response.value = "Failure" + t.message
+                t.printStackTrace()
             }
         }
     }

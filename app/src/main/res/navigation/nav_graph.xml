@@ -13,7 +13,7 @@
         android:name="com.example.inspace.earthcamera.EarthCameraFragment"
         android:label="EarthCamera" />
     <fragment
-        android:id="@+id/marsEstate"
+        android:id="@+id/marsEstates"
         android:name="com.example.inspace.marsestate.MarsEstateFragment"
         android:label="MarsEstate" />
 </navigation>

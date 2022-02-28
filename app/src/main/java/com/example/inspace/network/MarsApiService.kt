@@ -1,15 +1,15 @@
 package com.example.inspace.network
 
 import com.example.inspace.properties.MarsProperty
+import com.example.inspace.properties.MarsPropertyItem
 import com.example.inspace.retrofitobject.RetrofitObjectInitialization
-import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://mars.udacity.com/"
+private const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com/"
 
 interface MarsApiService {
     @GET("realestate")
-    fun getPropertiesAsync(): Deferred<List<MarsProperty>>
+    suspend fun getPropertiesAsync(): List<MarsPropertyItem>
 }
 
 object MarsApi {

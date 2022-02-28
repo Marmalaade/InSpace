@@ -1,6 +1,5 @@
 package com.example.inspace.mainastronomicalpicture
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,11 +25,10 @@ class MainPictureViewModel : ViewModel() {
         coroutineScope.launch {
             val getPropertiesDeferred = MainPictureApi.retrofitService.getPropertiesAsync()
             try {
-                val result = getPropertiesDeferred.await()
-                _displayData.value = Pair(result.title, result.img_url)
+                _displayData.value = Pair(getPropertiesDeferred.title, getPropertiesDeferred.img_url)
 
             } catch (t: Throwable) {
-                Log.e("Failure", "${t.message}")
+                t.printStackTrace()
             }
         }
 

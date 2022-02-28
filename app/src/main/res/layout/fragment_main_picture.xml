@@ -29,12 +29,15 @@
 
         <TextView
             android:id="@+id/tittle"
+            style="@style/TextViewPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_space"
+            android:layout_marginEnd="@dimen/normal_space"
             android:layout_marginBottom="@dimen/tittle_padding"
+            android:padding="@dimen/small_space"
             android:text="@{earthViewModel.displayData.first}"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

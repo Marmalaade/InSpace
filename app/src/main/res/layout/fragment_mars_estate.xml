@@ -10,16 +10,18 @@
             type="com.example.inspace.marsestate.MarsEstateViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/textView"
+        <ImageView
+            android:id="@+id/mars_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.response}"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.property.imgSrcUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

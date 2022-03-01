@@ -20,7 +20,7 @@ class MainPictureFragment : Fragment() {
     ): View? {
         val binding = FragmentMainPictureBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        binding.earthViewModel = viewModel
+        binding.viewModel = viewModel
         return binding.root
     }
 

@@ -15,14 +15,16 @@ class MarsEstatesFragment : Fragment() {
         ViewModelProvider(this)[MarsEstatesViewModel::class.java]
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentMarsEstateBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.marsPhotos.adapter = PhotosGridAdapter()
         return binding.root
     }
+
 }

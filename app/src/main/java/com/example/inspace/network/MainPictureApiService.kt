@@ -8,7 +8,7 @@ private const val BASE_URL = "https://api.nasa.gov/planetary/"
 
 interface MainPictureApiService {
     @GET("apod?api_key=g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb")
-     suspend fun getPropertiesAsync():MainPictureProperty
+    suspend fun getPropertiesAsync(): MainPictureProperty
 }
 
 object MainPictureApi {

@@ -1,10 +1,12 @@
 package com.example.inspace.mainastronomicalpicture
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MainPictureApi
 import com.example.inspace.network.MarsApiStatus
+import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,9 +16,9 @@ class MainPictureViewModel : ViewModel() {
 
     private val _status = MutableLiveData<MarsApiStatus>()
     private val viewModelJob = Job()
-    private val _displayData = MutableLiveData<Pair<String, String>>()
+    private val _displayData = MutableLiveData<Pair<String, String>?>()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    val displayData: LiveData<Pair<String, String>>
+    val displayData: LiveData<Pair<String, String>?>
         get() = _displayData
     val status: LiveData<MarsApiStatus>
         get() = _status
@@ -35,9 +37,11 @@ class MainPictureViewModel : ViewModel() {
                 _displayData.value = resultData
 
             } catch (t: Throwable) {
-                _status.value = MarsApiStatus.ERROR
+                _displayData.value = null
                 t.printStackTrace()
+                _status.value = MarsApiStatus.ERROR
             }
+
         }
 
     }

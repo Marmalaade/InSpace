@@ -15,5 +15,5 @@
     <fragment
         android:id="@+id/marsEstates"
         android:name="com.example.inspace.marsestate.MarsEstatesFragment"
-        android:label="MarsEstate" />
+        android:label="MarsEstates" />
 </navigation>

@@ -11,8 +11,8 @@ import com.example.inspace.databinding.FragmentMarsEstateBinding
 
 class MarsEstatesFragment : Fragment() {
 
-    private val viewModel: MarsEstateViewModel by lazy {
-        ViewModelProvider(this)[MarsEstateViewModel::class.java]
+    private val viewModel: MarsEstatesViewModel by lazy {
+        ViewModelProvider(this)[MarsEstatesViewModel::class.java]
     }
 
     override fun onCreateView(

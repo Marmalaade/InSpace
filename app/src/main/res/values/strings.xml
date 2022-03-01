@@ -3,6 +3,6 @@
     <string name="earth_photo_item">EarthCamera</string>
     <string name="mars_photo_item">MarsEstates</string>
     <string name="main_picture_item">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="refresh_tittle">Refresh</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MarsEstateViewModel : ViewModel() {
+class MarsEstatesViewModel : ViewModel() {
 
     private val _properties = MutableLiveData<List<MarsProperty>>()
     private val viewModelJob = Job()

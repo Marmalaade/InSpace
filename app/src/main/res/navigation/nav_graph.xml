@@ -15,5 +15,18 @@
     <fragment
         android:id="@+id/marsEstates"
         android:name="com.example.inspace.marsestate.MarsEstatesFragment"
-        android:label="MarsEstates" />
+        android:label="MarsEstates">
+        <action
+            android:id="@+id/actionShowDetail"
+            app:destination="@id/marsEstatesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/marsEstatesDetailFragment"
+        android:name="com.example.inspace.marsestatesdetail.MarsEstatesDetailFragment"
+        android:label="MarsEstatesDetailFragment">
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.example.inspace.properties.MarsProperty" />
+    </fragment>
+
 </navigation>

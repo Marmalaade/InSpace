@@ -17,4 +17,5 @@ class MarsEstatesDetailViewMode(marsProperty: MarsProperty, app: Application) : 
         _selectedProperty.value = marsProperty
     }
 
+
 }

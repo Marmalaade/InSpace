@@ -4,20 +4,21 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.squareup.moshi.Json
 
-
 data class MarsProperty(
     val id: String,
     @Json(name = "img_src") val imgSrcUrl: String,
     val price: Int,
     val type: String
-):Parcelable {
+) : Parcelable {
+    val isRental
+        get() = type == "rent"
+
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
         parcel.readString()!!
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)

@@ -33,12 +33,9 @@
             style="@style/TextViewPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/normal_space"
-            android:layout_marginEnd="@dimen/normal_space"
             android:layout_marginBottom="@dimen/tittle_padding"
             android:padding="@dimen/small_space"
             android:text="@{viewModel.displayData.first}"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

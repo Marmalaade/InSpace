@@ -23,5 +23,4 @@ class MarsEstatesDetailFragment : Fragment() {
         return binding.root
     }
 
-
 }

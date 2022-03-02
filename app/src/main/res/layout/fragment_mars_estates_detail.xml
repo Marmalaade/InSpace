@@ -30,12 +30,12 @@
 
         <TextView
             android:id="@+id/property_type_text"
+            style="@style/TextViewPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{viewModel.selectedProperty.type}"
-            android:textColor="@color/white"
-            android:textSize="42sp"
+            android:text="@{String.format(@string/display_type,viewModel.selectedProperty.type)}"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mars_place_photo_image"
@@ -43,12 +43,11 @@
 
         <TextView
             android:id="@+id/price_value_text"
+            style="@style/TextViewPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_space"
-            android:text="@{String.valueOf(viewModel.selectedProperty.price)}"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:text="@{String.format(@string/display_price,viewModel.selectedProperty.price)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/property_type_text"

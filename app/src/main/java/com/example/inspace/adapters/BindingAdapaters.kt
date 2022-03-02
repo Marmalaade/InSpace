@@ -1,5 +1,6 @@
 package com.example.inspace.adapters
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.inspace.R
 import com.example.inspace.network.MarsApiStatus
 import com.example.inspace.properties.MarsProperty
+import java.util.*
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<MarsProperty>?) {
@@ -34,6 +36,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 
 @BindingAdapter("marsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: MarsApiStatus?) {
+    Log.e("status", "$status")
     when (status) {
         MarsApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE

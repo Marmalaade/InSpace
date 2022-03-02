@@ -4,5 +4,6 @@
     <dimen name="small_space">8dp</dimen>
     <dimen name="normal_space">16dp</dimen>
     <dimen name="recycler_item_padding">6dp</dimen>
+    <dimen name="status_image_size">124dp</dimen>
 
 </resources>

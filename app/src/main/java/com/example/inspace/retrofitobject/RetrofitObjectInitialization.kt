@@ -13,7 +13,7 @@ object RetrofitObjectInitialization {
     fun initRetrofit(url: String): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(0, TimeUnit.SECONDS)
-            .readTimeout(0,TimeUnit.SECONDS)
+            .readTimeout(0, TimeUnit.SECONDS)
             .build()
 
         val moshi = Moshi.Builder()

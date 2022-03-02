@@ -13,6 +13,7 @@ class MainPictureFragment : Fragment() {
     private val viewModel: MainPictureViewModel by lazy {
         ViewModelProvider(this)[MainPictureViewModel::class.java]
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +23,6 @@ class MainPictureFragment : Fragment() {
         binding.viewModel = viewModel
         return binding.root
     }
-
 
 }
 

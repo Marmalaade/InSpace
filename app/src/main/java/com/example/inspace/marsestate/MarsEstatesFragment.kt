@@ -15,7 +15,6 @@ class MarsEstatesFragment : Fragment() {
         ViewModelProvider(this)[MarsEstatesViewModel::class.java]
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

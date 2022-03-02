@@ -1,11 +1,13 @@
 package com.example.inspace.marsestate
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MarsApi
 import com.example.inspace.network.MarsApiStatus
 import com.example.inspace.properties.MarsProperty
+import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -29,15 +31,19 @@ class MarsEstatesViewModel : ViewModel() {
 
     private fun getMarsEstateProperties() {
         coroutineScope.launch {
-            val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
             _status.value = MarsApiStatus.LOADING
+            val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
             try {
                 _status.value = MarsApiStatus.DONE
                 _properties.value = getPropertiesDeferred
 
             } catch (e: Exception) {
+                Log.e("Exception", e.message.toString())
                 _status.value = MarsApiStatus.ERROR
                 _properties.value = ArrayList()
+            } catch (e: NoInternetException) {
+                _status.value = MarsApiStatus.ERROR
+                Log.e("NoInternetException", e.message.toString())
             }
         }
     }

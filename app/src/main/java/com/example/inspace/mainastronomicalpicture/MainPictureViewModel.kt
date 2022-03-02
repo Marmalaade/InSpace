@@ -1,6 +1,5 @@
 package com.example.inspace.mainastronomicalpicture
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,20 +29,16 @@ class MainPictureViewModel : ViewModel() {
     private fun getMainPictureData() {
         coroutineScope.launch {
             val getPropertiesDeferred = MainPictureApi.retrofitService.getPropertiesAsync()
+            _status.value = MarsApiStatus.LOADING
             try {
-                _status.value = MarsApiStatus.LOADING
-                val resultData = Pair(getPropertiesDeferred.title, getPropertiesDeferred.img_url)
                 _status.value = MarsApiStatus.DONE
-                _displayData.value = resultData
+                _displayData.value = Pair(getPropertiesDeferred.title, getPropertiesDeferred.img_url)
 
-            } catch (t: Throwable) {
-                _displayData.value = null
-                t.printStackTrace()
+            } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
+                _displayData.value = null
             }
-
         }
-
     }
 
     override fun onCleared() {

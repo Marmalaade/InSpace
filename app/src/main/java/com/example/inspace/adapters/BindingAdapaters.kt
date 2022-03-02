@@ -25,7 +25,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(
                 RequestOptions()
-                    .placeholder(R.drawable.loading_img)
+                    .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_broken_image)
             )
             .into(imgView)
@@ -33,20 +33,18 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("marsApiStatus")
-fun bindStatus(statusImage: ImageView, status: MarsApiStatus?) {
+fun bindStatus(statusImageView: ImageView, status: MarsApiStatus?) {
     when (status) {
         MarsApiStatus.LOADING -> {
-            statusImage.visibility = View.VISIBLE
-            statusImage.setImageResource(R.drawable.loading_animation)
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
         }
         MarsApiStatus.ERROR -> {
-            statusImage.visibility = View.VISIBLE
-            statusImage.setImageResource(R.drawable.ic_connection_error)
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
         MarsApiStatus.DONE -> {
-            statusImage.visibility = View.GONE
+            statusImageView.visibility = View.GONE
         }
-
-
     }
 }

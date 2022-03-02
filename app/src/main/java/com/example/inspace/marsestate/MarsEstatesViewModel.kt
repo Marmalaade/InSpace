@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MarsApi
 import com.example.inspace.network.MarsApiStatus
 import com.example.inspace.properties.MarsProperty
-import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -31,16 +30,14 @@ class MarsEstatesViewModel : ViewModel() {
     private fun getMarsEstateProperties() {
         coroutineScope.launch {
             val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
+            _status.value = MarsApiStatus.LOADING
             try {
-                _status.value = MarsApiStatus.LOADING
-                if (getPropertiesDeferred.isNotEmpty()) {
-                    _status.value = MarsApiStatus.DONE
-                    _properties.value = getPropertiesDeferred
-                }
-            } catch (t: Throwable) {
-                t.printStackTrace()
-                _properties.value = ArrayList()
+                _status.value = MarsApiStatus.DONE
+                _properties.value = getPropertiesDeferred
+
+            } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
+                _properties.value = ArrayList()
             }
         }
     }

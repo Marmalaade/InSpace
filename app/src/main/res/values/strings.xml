@@ -9,5 +9,9 @@
     <string name="display_type">Opportunity to %s</string>
     <string name="display_price">for %s$</string>
 
+    <string name="first_filter_menu_item">All places</string>
+    <string name="second_filter_menu_item">For sale</string>
+    <string name="third_filter_menu_item">For rent</string>
+    <string name="terrain">Terrain</string>
 
 </resources>

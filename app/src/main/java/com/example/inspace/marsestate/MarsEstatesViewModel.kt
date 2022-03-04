@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MarsApi
+import com.example.inspace.network.MarsApiFilter
 import com.example.inspace.network.MarsApiStatus
 import com.example.inspace.properties.MarsProperty
 import com.example.inspace.util.NoInternetException
@@ -28,13 +29,13 @@ class MarsEstatesViewModel : ViewModel() {
         get() = _properties
 
     init {
-        getMarsEstateProperties()
+        getMarsEstateProperties(MarsApiFilter.SHOW_ALL)
     }
 
-    private fun getMarsEstateProperties() {
+    private fun getMarsEstateProperties(filter: MarsApiFilter) {
         coroutineScope.launch {
             _status.value = MarsApiStatus.LOADING
-            val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
+            val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync(filter.filterValue)
             try {
                 _status.value = MarsApiStatus.DONE
                 _properties.value = getPropertiesDeferred
@@ -62,4 +63,9 @@ class MarsEstatesViewModel : ViewModel() {
     fun displayDetailsCompleted() {
         _navigateToSelectedProperty.value = null
     }
+
+    fun updateFilter(filter: MarsApiFilter) {
+        getMarsEstateProperties(filter)
+    }
+
 }

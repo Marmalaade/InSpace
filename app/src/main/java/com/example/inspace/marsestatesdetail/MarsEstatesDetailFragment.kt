@@ -11,16 +11,22 @@ import com.example.inspace.databinding.FragmentMarsEstatesDetailBinding
 
 class MarsEstatesDetailFragment : Fragment() {
 
+    private var _binding: FragmentMarsEstatesDetailBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val application = requireNotNull(activity).application
-        val binding = FragmentMarsEstatesDetailBinding.inflate(inflater)
+        _binding = FragmentMarsEstatesDetailBinding.inflate(inflater)
         val marsProperty = MarsEstatesDetailFragmentArgs.fromBundle(requireArguments()).selectedProperty
         val viewModelFactory = MarsEstatesDetailViewModelFactory(marsProperty, application)
         binding.viewModel = ViewModelProvider(this, viewModelFactory)[MarsEstatesDetailViewMode::class.java]
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -13,6 +13,8 @@ import com.example.inspace.databinding.FragmentMarsEstateBinding
 
 class MarsEstatesFragment : Fragment() {
 
+    private var _binding: FragmentMarsEstateBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MarsEstatesViewModel by lazy {
         ViewModelProvider(this)[MarsEstatesViewModel::class.java]
     }
@@ -21,7 +23,7 @@ class MarsEstatesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentMarsEstateBinding.inflate(inflater)
+        _binding = FragmentMarsEstateBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.marsPhotos.adapter = PhotosGridAdapter(PhotosGridAdapter.OnClickListener {
@@ -34,6 +36,11 @@ class MarsEstatesFragment : Fragment() {
             }
         })
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

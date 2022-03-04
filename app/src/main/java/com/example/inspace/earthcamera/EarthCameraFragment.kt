@@ -9,12 +9,19 @@ import com.example.inspace.databinding.FragmentEarthCameraBinding
 
 class EarthCameraFragment : Fragment() {
 
+    private var _binding: FragmentEarthCameraBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentEarthCameraBinding.inflate(inflater)
+        _binding = FragmentEarthCameraBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,11 +1,11 @@
 package com.example.inspace.mainastronomicalpicture
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.inspace.R
 import com.example.inspace.databinding.FragmentMainPictureBinding
 
 class MainPictureFragment : Fragment() {
@@ -20,10 +20,36 @@ class MainPictureFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         _binding = FragmentMainPictureBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.refresh_menu, menu)
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.refresh_button -> refreshData()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun refreshData() {
+        activity?.intent?.addFlags(
+            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    or Intent.FLAG_ACTIVITY_NO_ANIMATION
+        )
+        activity?.apply {
+            overridePendingTransition(0, 0)
+            finish()
+            overridePendingTransition(0, 0)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

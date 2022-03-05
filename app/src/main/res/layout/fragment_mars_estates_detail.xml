@@ -10,59 +10,69 @@
             type="com.example.inspace.marsestatesdetail.MarsEstatesDetailViewMode" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        android:padding="@dimen/normal_space">
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
 
-
-        <ImageView
-            android:id="@+id/mars_place_photo_image"
-            android:layout_width="0dp"
-            android:layout_height="266dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/property_type_text"
-            style="@style/TextViewPrimary"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@{String.format(@string/display_type,viewModel.selectedProperty.type)}"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mars_place_photo_image"
-            tools:text="To Rent" />
-
-        <TextView
-            android:id="@+id/price_value_text"
-            style="@style/TextViewPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_space"
-            android:text="@{String.format(@string/display_price,viewModel.selectedProperty.price)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/property_type_text"
-            tools:text="$999,000" />
-
-        <ImageView
-            android:id="@+id/mars_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_mars_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_value_text" />
+            android:background="@color/black"
+            android:padding="@dimen/normal_space">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/mars_place_photo_image"
+                android:layout_width="0dp"
+                android:layout_height="270dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/property_type_text"
+                style="@style/TextViewPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_space"
+                android:text="@{String.format(@string/display_type,viewModel.selectedProperty.type)}"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mars_place_photo_image"
+                tools:text="To Rent" />
+
+            <TextView
+                android:id="@+id/price_value_text"
+                style="@style/TextViewPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_space"
+                android:text="@{String.format(@string/display_price,viewModel.selectedProperty.price)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/property_type_text"
+                tools:text="$999,000" />
+
+            <ImageView
+                android:id="@+id/mars_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_vertical_space"
+                android:layout_marginBottom="@dimen/normal_space"
+                android:src="@drawable/ic_mars_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_value_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

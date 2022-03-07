@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.inspace.network.ApiStatus
 import com.example.inspace.network.EarthCameraApi
 import com.example.inspace.properties.EarthCameraDateProperty
-import com.example.inspace.properties.MarsProperty
 import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,10 +27,10 @@ class EarthCameraViewModel : ViewModel() {
         get() = _navigateToSelectedProperty
 
     init {
-        getEarthCameraPhotos()
+        getEarthCameraDates()
     }
 
-    private fun getEarthCameraPhotos() {
+    private fun getEarthCameraDates() {
         coroutineScope.launch {
             _status.value = ApiStatus.LOADING
             val getPropertiesDeferred = EarthCameraApi.retrofitService.getPropertiesAsync()

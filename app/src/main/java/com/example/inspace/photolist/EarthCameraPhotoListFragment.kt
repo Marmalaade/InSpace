@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.inspace.adapters.EarthCameraPhotosAdapter
 import com.example.inspace.databinding.FragmentEarthCameraPhotoListBinding
 
 class EarthCameraPhotoListFragment : Fragment() {
@@ -20,8 +21,8 @@ class EarthCameraPhotoListFragment : Fragment() {
     ): View? {
         _binding = FragmentEarthCameraPhotoListBinding.inflate(inflater)
         val application = requireNotNull(activity).application
-        binding.lifecycleOwner = this
-
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.photoItems.adapter = EarthCameraPhotosAdapter()
         val earthCameraDateProperty = EarthCameraPhotoListFragmentArgs.fromBundle(requireArguments()).selectedProperty
         val viewModelFactory = EarthCameraPhotoListViewModelFactory(earthCameraDateProperty, application)
         binding.viewModel = ViewModelProvider(this, viewModelFactory)[EarthCameraPhotoListViewModel::class.java]

@@ -26,7 +26,7 @@ class EarthCameraFragment : Fragment() {
     ): View? {
         _binding = FragmentEarthCameraBinding.inflate(inflater)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.datesItem.adapter = EarthCameraDatesAdapter(EarthCameraDatesAdapter.OnClickListener {
             viewModel.displayPhotoListProperty(it)

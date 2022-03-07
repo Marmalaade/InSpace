@@ -8,9 +8,11 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.example.inspace.R
 import com.example.inspace.network.ApiStatus
 import com.example.inspace.properties.EarthCameraDateProperty
+import com.example.inspace.properties.EarthCameraPhotoProperty
 import com.example.inspace.properties.MarsProperty
 
 @BindingAdapter("listData")
@@ -25,6 +27,12 @@ fun bindRecyclerViewDates(recyclerView: RecyclerView, data: List<EarthCameraDate
     adapter.submitList(data)
 }
 
+@BindingAdapter("listPhotos")
+fun bindRecyclerViewPhotos(recyclerView: RecyclerView, data: List<EarthCameraPhotoProperty>?) {
+    val adapter = recyclerView.adapter as EarthCameraPhotosAdapter
+    adapter.submitList(data)
+}
+
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
@@ -33,10 +41,12 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(
                 RequestOptions()
+                    .override(SIZE_ORIGINAL, SIZE_ORIGINAL)
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_broken_image)
             )
             .into(imgView)
+
     }
 }
 

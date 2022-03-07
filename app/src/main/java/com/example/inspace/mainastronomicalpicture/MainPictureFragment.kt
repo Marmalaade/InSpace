@@ -22,7 +22,7 @@ class MainPictureFragment : Fragment() {
     ): View {
         setHasOptionsMenu(true)
         _binding = FragmentMainPictureBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         return binding.root
     }

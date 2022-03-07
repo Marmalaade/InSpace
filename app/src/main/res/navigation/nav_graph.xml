@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/earthCameraPhotoListFragment"
         android:name="com.example.inspace.photolist.EarthCameraPhotoListFragment"
-        android:label="Choose a day">
+        android:label="PhotoTime">
         <argument
             android:name="selectedProperty"
             app:argType="com.example.inspace.properties.EarthCameraDateProperty" />

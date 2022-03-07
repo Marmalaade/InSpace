@@ -25,7 +25,7 @@ class MarsEstatesFragment : Fragment() {
     ): View {
         _binding = FragmentMarsEstateBinding.inflate(inflater)
         setHasOptionsMenu(true)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.marsPhotos.adapter = MarsPhotosGridAdapter(MarsPhotosGridAdapter.OnClickListener {
             viewModel.displayPropertyDetails(it)

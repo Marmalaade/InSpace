@@ -1,8 +1,11 @@
 package com.example.inspace.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +36,7 @@ fun bindRecyclerViewPhotos(recyclerView: RecyclerView, data: List<EarthCameraPho
     adapter.submitList(data)
 }
 
+@SuppressLint("CheckResult")
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
@@ -40,10 +44,15 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         Glide.with(imgView.context)
             .load(imgUri)
             .apply(
-                RequestOptions()
-                    .override(SIZE_ORIGINAL, SIZE_ORIGINAL)
-                    .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image)
+                RequestOptions().apply {
+                    imgView.layoutParams?.apply {
+                        if (width == ViewGroup.LayoutParams.WRAP_CONTENT && height == ViewGroup.LayoutParams.WRAP_CONTENT)
+                            override(SIZE_ORIGINAL, SIZE_ORIGINAL)
+                    }
+                    placeholder(R.drawable.loading_animation)
+                    error(R.drawable.ic_broken_image)
+                }
+
             )
             .into(imgView)
 

@@ -16,6 +16,7 @@
         android:layout_marginTop="@dimen/normal_space"
         android:layout_marginBottom="@dimen/normal_space"
         android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:focusable="true"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="6dp"

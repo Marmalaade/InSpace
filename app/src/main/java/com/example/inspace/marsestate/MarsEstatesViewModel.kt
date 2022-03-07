@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.inspace.network.MarsApi
 import com.example.inspace.network.MarsApiFilter
-import com.example.inspace.network.MarsApiStatus
+import com.example.inspace.network.ApiStatus
 import com.example.inspace.properties.MarsProperty
 import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
@@ -16,14 +16,14 @@ import kotlinx.coroutines.launch
 
 class MarsEstatesViewModel : ViewModel() {
 
-    private val _status = MutableLiveData<MarsApiStatus>()
+    private val _status = MutableLiveData<ApiStatus>()
     private val _properties = MutableLiveData<List<MarsProperty>>()
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     private val _navigateToSelectedProperty = MutableLiveData<MarsProperty?>()
     val navigateToSelectedProperty: LiveData<MarsProperty?>
         get() = _navigateToSelectedProperty
-    val status: LiveData<MarsApiStatus>
+    val status: LiveData<ApiStatus>
         get() = _status
     val properties: LiveData<List<MarsProperty>>
         get() = _properties
@@ -34,18 +34,18 @@ class MarsEstatesViewModel : ViewModel() {
 
     private fun getMarsEstateProperties(filter: MarsApiFilter) {
         coroutineScope.launch {
-            _status.value = MarsApiStatus.LOADING
+            _status.value = ApiStatus.LOADING
             val getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync(filter.filterValue)
             try {
-                _status.value = MarsApiStatus.DONE
+                _status.value = ApiStatus.DONE
                 _properties.value = getPropertiesDeferred
 
             } catch (e: Exception) {
                 Log.e("Exception", e.message.toString())
-                _status.value = MarsApiStatus.ERROR
+                _status.value = ApiStatus.ERROR
                 _properties.value = ArrayList()
             } catch (e: NoInternetException) {
-                _status.value = MarsApiStatus.ERROR
+                _status.value = ApiStatus.ERROR
                 Log.e("NoInternetException", e.message.toString())
             }
         }

@@ -1,53 +1,48 @@
-package com.example.inspace.mainastronomicalpicture
+package com.example.inspace.earthcamera
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.inspace.network.MainPictureApi
 import com.example.inspace.network.ApiStatus
+import com.example.inspace.network.EarthCameraApi
+import com.example.inspace.properties.EarthCameraDateProperty
 import com.example.inspace.util.NoInternetException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MainPictureViewModel : ViewModel() {
+class EarthCameraViewModel : ViewModel() {
 
+    private val _properties = MutableLiveData<EarthCameraDateProperty>()
     private val _status = MutableLiveData<ApiStatus>()
     private val viewModelJob = Job()
-    private val _displayData = MutableLiveData<Pair<String, String>?>()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    val displayData: LiveData<Pair<String, String>?>
-        get() = _displayData
-    val status: LiveData<ApiStatus>
-        get() = _status
+    val properties: LiveData<EarthCameraDateProperty>
+        get() = _properties
 
     init {
-        getMainPictureData()
+        getEarthCameraPhotos()
     }
 
-    private fun getMainPictureData() {
+    private fun getEarthCameraPhotos() {
         coroutineScope.launch {
             _status.value = ApiStatus.LOADING
-            val getPropertiesDeferred = MainPictureApi.retrofitService.getPropertiesAsync()
+            val getPropertiesDeferred = EarthCameraApi.retrofitService.getPropertiesAsync()
             try {
                 _status.value = ApiStatus.DONE
-                _displayData.value = Pair(getPropertiesDeferred.title, getPropertiesDeferred.img_url)
+                if(getPropertiesDeferred.isNotEmpty()){
+                    _properties.value = getPropertiesDeferred[0]
+                }
 
             } catch (e: Exception) {
                 Log.e("Exception", e.message.toString())
                 _status.value = ApiStatus.ERROR
-                _displayData.value = null
             } catch (e: NoInternetException) {
-                Log.e("NoInternetException", e.message.toString())
                 _status.value = ApiStatus.ERROR
+                Log.e("NoInternetException", e.message.toString())
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
     }
 }

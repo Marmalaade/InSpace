@@ -11,9 +11,9 @@
     <fragment
         android:id="@+id/earthCamera"
         android:name="com.example.inspace.earthcamera.EarthCameraFragment"
-        android:label="EarthCamera" >
+        android:label="EarthCamera">
         <action
-            android:id="@+id/action_earthCamera_to_earthCameraPhotoListFragment"
+            android:id="@+id/showPhotoList"
             app:destination="@id/earthCameraPhotoListFragment" />
     </fragment>
     <fragment
@@ -35,6 +35,11 @@
     <fragment
         android:id="@+id/earthCameraPhotoListFragment"
         android:name="com.example.inspace.photolist.EarthCameraPhotoListFragment"
-        android:label="EarthCameraPhotoListFragment" />
+        android:label="Choose a day">
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.example.inspace.properties.EarthCameraDateProperty" />
+
+    </fragment>
 
 </navigation>

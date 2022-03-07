@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inspace.databinding.DateItemBinding
 import com.example.inspace.properties.EarthCameraDateProperty
-import com.example.inspace.properties.MarsProperty
 
 class EarthCameraDatesAdapter(private val onClickListener: EarthCameraDatesAdapter.OnClickListener) :
     ListAdapter<EarthCameraDateProperty, EarthCameraDatesAdapter.EarthCameraViewHolder>(DiffCallback) {
@@ -35,6 +34,9 @@ class EarthCameraDatesAdapter(private val onClickListener: EarthCameraDatesAdapt
 
     override fun onBindViewHolder(holder: EarthCameraDatesAdapter.EarthCameraViewHolder, position: Int) {
         val earthCameraDateProperty = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(earthCameraDateProperty)
+        }
         holder.bind(earthCameraDateProperty)
     }
 

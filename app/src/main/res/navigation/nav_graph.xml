@@ -11,7 +11,11 @@
     <fragment
         android:id="@+id/earthCamera"
         android:name="com.example.inspace.earthcamera.EarthCameraFragment"
-        android:label="EarthCamera" />
+        android:label="EarthCamera" >
+        <action
+            android:id="@+id/action_earthCamera_to_earthCameraPhotoListFragment"
+            app:destination="@id/earthCameraPhotoListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/marsEstates"
         android:name="com.example.inspace.marsestate.MarsEstatesFragment"
@@ -28,5 +32,9 @@
             android:name="selectedProperty"
             app:argType="com.example.inspace.properties.MarsProperty" />
     </fragment>
+    <fragment
+        android:id="@+id/earthCameraPhotoListFragment"
+        android:name="com.example.inspace.photolist.EarthCameraPhotoListFragment"
+        android:label="EarthCameraPhotoListFragment" />
 
 </navigation>

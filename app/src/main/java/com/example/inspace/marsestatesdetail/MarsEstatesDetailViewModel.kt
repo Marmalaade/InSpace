@@ -1,10 +1,9 @@
 package com.example.inspace.marsestatesdetail
 
 import android.app.Application
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.*
-import com.example.inspace.R
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.inspace.properties.MarsProperty
 
 class MarsEstatesDetailViewMode(marsProperty: MarsProperty, app: Application) : AndroidViewModel(app) {

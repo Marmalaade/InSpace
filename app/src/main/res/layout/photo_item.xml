@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="photos"
+            type="com.example.inspace.properties.EarthCameraPhotoProperty"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_space"
+        android:layout_marginBottom="@dimen/normal_space"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="6dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cardview_background"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text"
+                style="@style/TextViewPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="@{photos.date}"
+                app:drawableStartCompat="@android:drawable/ic_menu_gallery"
+                tools:text="test text" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

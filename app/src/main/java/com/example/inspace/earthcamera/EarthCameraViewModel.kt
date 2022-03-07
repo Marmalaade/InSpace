@@ -1,6 +1,5 @@
 package com.example.inspace.earthcamera
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -42,10 +41,6 @@ class EarthCameraViewModel : ViewModel() {
                 _status.value = ApiStatus.ERROR
             }
         }
-    }
-
-    fun test() {
-
     }
 
     override fun onCleared() {

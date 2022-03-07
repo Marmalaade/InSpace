@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.example.inspace.adapters.EarthCameraDatesAdapter
+import com.example.inspace.adapters.MarsPhotosGridAdapter
 import com.example.inspace.databinding.FragmentEarthCameraBinding
 
 class EarthCameraFragment : Fragment() {
@@ -24,6 +26,9 @@ class EarthCameraFragment : Fragment() {
         _binding = FragmentEarthCameraBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        binding.datesItem.adapter = EarthCameraDatesAdapter()
+
         return binding.root
     }
 

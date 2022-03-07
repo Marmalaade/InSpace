@@ -24,6 +24,7 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:imageUrl="@{viewModel.displayData.second}"
+            app:layout_constraintBottom_toTopOf="@+id/status_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

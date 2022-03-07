@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inspace.databinding.GridViewItemBinding
 import com.example.inspace.properties.MarsProperty
 
-class PhotosGridAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<MarsProperty, PhotosGridAdapter.MarsPropertyViewHolder>(DiffCallback) {
+class MarsPhotosGridAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<MarsProperty, MarsPhotosGridAdapter.MarsPropertyViewHolder>(DiffCallback) {
     class MarsPropertyViewHolder(private var binding: GridViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(marsProperty: MarsProperty) {
             binding.property = marsProperty
@@ -28,11 +28,11 @@ class PhotosGridAdapter(private val onClickListener: OnClickListener) :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosGridAdapter.MarsPropertyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsPhotosGridAdapter.MarsPropertyViewHolder {
         return MarsPropertyViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: PhotosGridAdapter.MarsPropertyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MarsPhotosGridAdapter.MarsPropertyViewHolder, position: Int) {
         val marsProperty = getItem(position)
         holder.itemView.setOnClickListener{
             onClickListener.onClick(marsProperty)

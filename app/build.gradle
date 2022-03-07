@@ -77,6 +77,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     //Okhttp
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
-
+    //Cardview
+    //noinspection GradleCompatible
+    implementation 'androidx.cardview:cardview:1.0.0'
 
 }

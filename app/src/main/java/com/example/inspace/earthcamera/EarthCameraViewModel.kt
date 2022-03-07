@@ -15,12 +15,14 @@ import kotlinx.coroutines.launch
 
 class EarthCameraViewModel : ViewModel() {
 
-    private val _properties = MutableLiveData<EarthCameraDateProperty>()
+    private val _properties = MutableLiveData<List<EarthCameraDateProperty>>()
     private val _status = MutableLiveData<ApiStatus>()
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    val properties: LiveData<EarthCameraDateProperty>
+    val properties: LiveData<List<EarthCameraDateProperty>>
         get() = _properties
+    val status: LiveData<ApiStatus>
+        get() = _status
 
     init {
         getEarthCameraPhotos()
@@ -32,17 +34,22 @@ class EarthCameraViewModel : ViewModel() {
             val getPropertiesDeferred = EarthCameraApi.retrofitService.getPropertiesAsync()
             try {
                 _status.value = ApiStatus.DONE
-                if(getPropertiesDeferred.isNotEmpty()){
-                    _properties.value = getPropertiesDeferred[0]
-                }
+                _properties.value = getPropertiesDeferred
 
             } catch (e: Exception) {
-                Log.e("Exception", e.message.toString())
                 _status.value = ApiStatus.ERROR
             } catch (e: NoInternetException) {
                 _status.value = ApiStatus.ERROR
-                Log.e("NoInternetException", e.message.toString())
             }
         }
+    }
+
+    fun test() {
+
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

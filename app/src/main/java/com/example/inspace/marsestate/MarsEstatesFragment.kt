@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.inspace.R
-import com.example.inspace.adapters.PhotosGridAdapter
+import com.example.inspace.adapters.MarsPhotosGridAdapter
 import com.example.inspace.databinding.FragmentMarsEstateBinding
 import com.example.inspace.network.MarsApiFilter
 
@@ -27,7 +27,7 @@ class MarsEstatesFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.marsPhotos.adapter = PhotosGridAdapter(PhotosGridAdapter.OnClickListener {
+        binding.marsPhotos.adapter = MarsPhotosGridAdapter(MarsPhotosGridAdapter.OnClickListener {
             viewModel.displayPropertyDetails(it)
         })
         viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {

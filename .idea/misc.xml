@@ -3,17 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/cardview_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_terrain_24.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_broken_image.xml" value="0.175" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_connection_error.xml" value="0.175" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_mars_icon.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_terrain.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_terrains.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/loading_img.xml" value="0.175" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_item.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_sheet.xml" value="0.12613981762917933" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera.xml" value="0.1" />
-        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_main_picture.xml" value="0.12" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_main_picture.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_mars_estate.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_mars_estates_detail.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/grid_view_item.xml" value="0.10131712259371833" />

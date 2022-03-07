@@ -10,11 +10,18 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.inspace.R
 import com.example.inspace.network.ApiStatus
+import com.example.inspace.properties.EarthCameraDateProperty
 import com.example.inspace.properties.MarsProperty
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<MarsProperty>?) {
-    val adapter = recyclerView.adapter as PhotosGridAdapter
+    val adapter = recyclerView.adapter as MarsPhotosGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listDates")
+fun bindRecyclerViewDates(recyclerView: RecyclerView, data: List<EarthCameraDateProperty>?) {
+    val adapter = recyclerView.adapter as EarthCameraDatesAdapter
     adapter.submitList(data)
 }
 

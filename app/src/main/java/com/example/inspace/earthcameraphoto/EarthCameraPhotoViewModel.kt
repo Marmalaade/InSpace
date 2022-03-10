@@ -6,19 +6,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.inspace.properties.EarthCameraPhotoProperty
 
-class EarthCameraPhotoViewModel(photoProperty: EarthCameraPhotoProperty, dateProperty: EarthCameraPhotoProperty, app: Application) :
+class EarthCameraPhotoViewModel(imageProperties: EarthCameraPhotoProperty, app: Application) :
     AndroidViewModel(app) {
-    private val _selectedImage = MutableLiveData<EarthCameraPhotoProperty>()
-    private val _selectedDate = MutableLiveData<EarthCameraPhotoProperty>()
+    private val _selectedImageProperties = MutableLiveData<EarthCameraPhotoProperty>()
 
-    val selectedImage: LiveData<EarthCameraPhotoProperty>
-        get() = _selectedImage
 
-    val selectedDate: LiveData<EarthCameraPhotoProperty>
-        get() = _selectedDate
+    val selectedImageProperties: LiveData<EarthCameraPhotoProperty>
+        get() = _selectedImageProperties
+
 
     init {
-        _selectedImage.value = photoProperty
-        _selectedDate.value = dateProperty
+        _selectedImageProperties.value = imageProperties
     }
 }

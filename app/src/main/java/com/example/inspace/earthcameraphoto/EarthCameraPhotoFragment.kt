@@ -23,9 +23,8 @@ class EarthCameraPhotoFragment : Fragment() {
         val application = requireNotNull(activity).application
         _binding = FragmentEarthCameraPhotoBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
-        val photoProperty = EarthCameraPhotoFragmentArgs.fromBundle(requireArguments()).selectedImage
-        val dateProperty = EarthCameraPhotoFragmentArgs.fromBundle(requireArguments()).selectedDate
-        val viewModelFactory = EarthCameraPhotoViewModelFactory(photoProperty, dateProperty, application)
+        val imageProperties = EarthCameraPhotoFragmentArgs.fromBundle(requireArguments()).selectedImageProperties
+        val viewModelFactory = EarthCameraPhotoViewModelFactory(imageProperties, application)
         binding.viewModel = ViewModelProvider(this, viewModelFactory)[EarthCameraPhotoViewModel::class.java]
         return binding.root
     }

@@ -34,7 +34,7 @@ class EarthCameraPhotoListFragment : Fragment() {
         })
         viewModel.navigateToSelectedImage.observe(viewLifecycleOwner, Observer {
             if (null != it) {
-                view?.findNavController()?.navigate(EarthCameraPhotoListFragmentDirections.showImage(it, it))
+                view?.findNavController()?.navigate(EarthCameraPhotoListFragmentDirections.showImage(it))
                 viewModel.displaySelectedImageCompleted()
             }
         })

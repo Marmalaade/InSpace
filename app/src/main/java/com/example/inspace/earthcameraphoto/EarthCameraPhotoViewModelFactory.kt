@@ -7,13 +7,12 @@ import com.example.inspace.properties.EarthCameraPhotoProperty
 
 class EarthCameraPhotoViewModelFactory(
     private val earthCameraPhotoProperty: EarthCameraPhotoProperty,
-    private val earthCameraDateProperty: EarthCameraPhotoProperty,
     private val application: Application
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EarthCameraPhotoViewModel::class.java)) {
-            return EarthCameraPhotoViewModel(earthCameraPhotoProperty, earthCameraDateProperty, application) as T
+            return EarthCameraPhotoViewModel(earthCameraPhotoProperty, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

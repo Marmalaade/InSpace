@@ -38,7 +38,6 @@ class EarthCameraPhotosAdapter(private val onClickListener: EarthCameraPhotosAda
         val earthCameraPhotoProperty = getItem(position)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(earthCameraPhotoProperty)
-            Toast.makeText(it.context, "mama", Toast.LENGTH_SHORT).show()
         }
         holder.bind(earthCameraPhotoProperty)
     }

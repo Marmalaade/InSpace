@@ -10,7 +10,6 @@ class EarthCameraPhotoViewModel(imageProperties: EarthCameraPhotoProperty, app: 
     AndroidViewModel(app) {
     private val _selectedImageProperties = MutableLiveData<EarthCameraPhotoProperty>()
 
-
     val selectedImageProperties: LiveData<EarthCameraPhotoProperty>
         get() = _selectedImageProperties
 

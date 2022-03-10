@@ -8,11 +8,17 @@ import retrofit2.http.Path
 
 private const val BASE_URL = "https://api.nasa.gov/EPIC/api/"
 
+
 interface EarthCameraApiService {
-    @GET("natural/all?api_key=g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb")
+
+    object apiKey {
+        const val KEY = "g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb"
+    }
+
+    @GET("natural/all?api_key=$KEY")
     suspend fun getPropertiesAsync(): List<EarthCameraDateProperty>
 
-    @GET("natural/date/{date}?api_key=g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb")
+    @GET("natural/date/{date}?api_key=$KEY")
     suspend fun getPhotoListAsync(@Path("date") date: String): List<EarthCameraPhotoProperty>
 }
 

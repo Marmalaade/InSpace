@@ -2,6 +2,7 @@ package com.example.inspace.properties
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.example.inspace.network.EarthCameraApiService
 
 data class EarthCameraPhotoProperty(
     val caption: String,
@@ -10,6 +11,19 @@ data class EarthCameraPhotoProperty(
     val image: String
 
 ) : Parcelable {
+
+    fun getImageUrl(): String {
+        val sb = StringBuilder()
+        sb.append("https://api.nasa.gov/EPIC/archive/natural/")
+        val dateComponents = date.split(" ".toRegex()).toTypedArray()[0].split("-".toRegex()).toTypedArray()
+        sb
+            .append(dateComponents[0]).append('/')
+            .append(dateComponents[1]).append('/')
+            .append(dateComponents[2]).append("/png/")
+            .append(image).append(".png?api_key=").append(EarthCameraApiService.apiKey.KEY)
+        return sb.toString()
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,

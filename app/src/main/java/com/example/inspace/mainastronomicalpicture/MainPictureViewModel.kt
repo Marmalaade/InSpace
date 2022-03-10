@@ -17,6 +17,7 @@ class MainPictureViewModel : ViewModel() {
     private val _status = MutableLiveData<ApiStatus>()
     private val viewModelJob = Job()
     private val _displayData = MutableLiveData<Pair<String, String>?>()
+    val mama = "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb"
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     val displayData: LiveData<Pair<String, String>?>
         get() = _displayData

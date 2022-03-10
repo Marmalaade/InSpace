@@ -1,4 +1,4 @@
-package com.example.inspace.photolist
+package com.example.inspace.earthcameraphotolist
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

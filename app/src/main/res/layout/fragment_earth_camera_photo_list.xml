@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.inspace.photolist.EarthCameraPhotoListViewModel" />
+            type="com.example.inspace.earthcameraphotolist.EarthCameraPhotoListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

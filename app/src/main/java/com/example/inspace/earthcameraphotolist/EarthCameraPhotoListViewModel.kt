@@ -1,4 +1,4 @@
-package com.example.inspace.photolist
+package com.example.inspace.earthcameraphotolist
 
 import android.app.Application
 import android.util.Log
@@ -19,15 +19,17 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
 
     private val _status = MutableLiveData<ApiStatus>()
     private val _selectedProperty = MutableLiveData<EarthCameraDateProperty>()
+    private val _navigateToSelectedImage = MutableLiveData<EarthCameraPhotoProperty?>()
     private val _properties = MutableLiveData<List<EarthCameraPhotoProperty>>()
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    val navigateToSelectedImage: LiveData<EarthCameraPhotoProperty?>
+        get() = _navigateToSelectedImage
     val properties: LiveData<List<EarthCameraPhotoProperty>>
         get() = _properties
     val status: LiveData<ApiStatus>
         get() = _status
-    val selectedProperty: LiveData<EarthCameraDateProperty>
-        get() = _selectedProperty
 
     init {
         _selectedProperty.value = earthCameraDateProperty
@@ -41,7 +43,7 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
             try {
                 _status.value = ApiStatus.DONE
                 val result = getPropertiesDeferred
-              Log.e("mama","$result")
+                Log.e("mama", "$result")
                 _properties.value = getPropertiesDeferred
 
             } catch (e: Exception) {
@@ -50,6 +52,14 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
                 _status.value = ApiStatus.ERROR
             }
         }
+    }
+
+    fun displaySelectedImage(earthCameraPhotoProperty: EarthCameraPhotoProperty) {
+        _navigateToSelectedImage.value = earthCameraPhotoProperty
+    }
+
+    fun displaySelectedImageCompleted() {
+        _navigateToSelectedImage.value = null
     }
 
     override fun onCleared() {

@@ -2,13 +2,15 @@ package com.example.inspace.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inspace.databinding.PhotoItemBinding
+import com.example.inspace.properties.EarthCameraDateProperty
 import com.example.inspace.properties.EarthCameraPhotoProperty
 
-class EarthCameraPhotosAdapter() :
+class EarthCameraPhotosAdapter(private val onClickListener: EarthCameraPhotosAdapter.OnClickListener) :
     ListAdapter<EarthCameraPhotoProperty, EarthCameraPhotosAdapter.EarthCameraPhotosViewHolder>(DiffCallback) {
     class EarthCameraPhotosViewHolder(private var binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(earthCameraPhotoProperty: EarthCameraPhotoProperty) {
@@ -34,7 +36,15 @@ class EarthCameraPhotosAdapter() :
 
     override fun onBindViewHolder(holder: EarthCameraPhotosAdapter.EarthCameraPhotosViewHolder, position: Int) {
         val earthCameraPhotoProperty = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(earthCameraPhotoProperty)
+            Toast.makeText(it.context, "mama", Toast.LENGTH_SHORT).show()
+        }
         holder.bind(earthCameraPhotoProperty)
+    }
+
+    class OnClickListener(val clickListener: (earthCameraPhotoProperty: EarthCameraPhotoProperty) -> Unit) {
+        fun onClick(earthCameraPhotoProperty: EarthCameraPhotoProperty) = clickListener(earthCameraPhotoProperty)
     }
 
 

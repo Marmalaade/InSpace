@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/earthCameraPhotoFragment"
         android:name="com.example.inspace.earthcameraphoto.EarthCameraPhotoFragment"
-        android:label="EarthCameraPhotoFragment">
+        android:label="EarthCameraPhoto">
         <argument
             android:name="selectedImageProperties"
             app:argType="com.example.inspace.properties.EarthCameraPhotoProperty" />

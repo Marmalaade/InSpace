@@ -59,6 +59,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+
 @BindingAdapter("marsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
     Log.e("status", "$status")

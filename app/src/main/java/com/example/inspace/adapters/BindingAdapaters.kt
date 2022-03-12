@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -58,7 +57,6 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 
     }
 }
-
 
 @BindingAdapter("marsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {

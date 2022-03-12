@@ -42,8 +42,6 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
             val getPropertiesDeferred = EarthCameraApi.retrofitService.getPhotoListAsync(data)
             try {
                 _status.value = ApiStatus.DONE
-                val result = getPropertiesDeferred
-                Log.e("mama", "$result")
                 _properties.value = getPropertiesDeferred
 
             } catch (e: Exception) {

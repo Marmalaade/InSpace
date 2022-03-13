@@ -19,8 +19,6 @@ class EarthCameraPhotoViewModel(imageProperties: EarthCameraPhotoProperty, app: 
 
     init {
         _selectedImageProperties.value = imageProperties
-
     }
-
 
 }

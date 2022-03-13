@@ -14,6 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <style name="TextViewPrimary">
         <item name="android:lineSpacingMultiplier">1.25</item>
         <item name="android:shadowColor">@color/black</item>
@@ -26,5 +34,17 @@
         <item name="android:layout_marginStart">@dimen/normal_space</item>
         <item name="android:layout_marginEnd">@dimen/normal_space</item>
         <item name="fontFamily">monospace</item>
+    </style>
+
+    <style name="BottomSheetCustomButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginStart">@dimen/bottom_sheet_item_space</item>
+        <item name="android:layout_marginEnd">@dimen/bottom_sheet_item_space</item>
+        <item name="strokeColor">@color/color_lightGray</item>
+        <item name="strokeWidth">2dp</item>
+
     </style>
 </resources>

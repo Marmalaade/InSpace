@@ -5,6 +5,9 @@
     <string name="main_picture_item">Home</string>
     <string name="refresh_tittle">Refresh</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_text">Select an action</string>
+    <string name="share">Share</string>
+    <string name="wallpaper">Wallpaper</string>
 
     <string name="display_type">Opportunity to %s</string>
     <string name="display_price">for %s$</string>

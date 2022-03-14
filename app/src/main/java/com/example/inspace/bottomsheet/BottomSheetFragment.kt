@@ -27,10 +27,31 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        dialog?.let {
-            val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
-            val behavior = BottomSheetBehavior.from(bottomSheet)
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
+
+        val bottomSheet = dialog?.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
+        val behavior = BottomSheetBehavior.from(bottomSheet)
+        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+        behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> Log.e(TAG, "STATE_COLLAPSED")
+                    BottomSheetBehavior.STATE_EXPANDED -> Log.e(TAG, "STATE_EXPANDED")
+                    else -> Log.d(TAG, "$newState")
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                if (isAdded) {
+                    animateBottomArrow(slideOffset)
+                }
+            }
+        })
+    }
+
+    private fun animateBottomArrow(offset: Float) {
+        binding.bottomArrow.rotation = (offset * -180)
+        binding.bottomArrow.rotation = (offset * 180)
+
     }
 }

@@ -12,14 +12,16 @@
         app:behavior_peekHeight="20dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <View
+        <ImageView
+            android:id="@+id/bottom_arrow"
             android:layout_width="20dp"
-            android:layout_height="3dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/bottom_sheet_item_space"
-            android:background="@drawable/line_view" />
+            android:background="@drawable/ic_bottom_arrow" />
 
         <TextView
+            android:id="@+id/choose_action_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -67,6 +69,7 @@
             android:background="@color/color_lightGray" />
 
         <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/earth_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

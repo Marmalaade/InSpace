@@ -1,5 +1,8 @@
 package com.example.inspace.bottomsheet
 
+import android.app.WallpaperManager
+import android.graphics.Bitmap
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,10 +13,16 @@ import com.example.inspace.R
 import com.example.inspace.databinding.FragmentBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 
-class BottomSheetFragment : BottomSheetDialogFragment() {
-    lateinit var binding: FragmentBottomSheetBinding
+class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFragment() {
+    private var _binding: FragmentBottomSheetBinding? = null
+    private val binding get() = _binding!!
+    private var mediaPlayer: MediaPlayer? = null
     override fun getTheme() = R.style.AppBottomSheetDialogTheme
 
     companion object {
@@ -21,7 +30,14 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentBottomSheetBinding.bind(inflater.inflate(R.layout.fragment_bottom_sheet, container))
+        _binding = FragmentBottomSheetBinding.bind(inflater.inflate(R.layout.fragment_bottom_sheet, container))
+        mediaPlayer = MediaPlayer.create(activity?.applicationContext, R.raw.done_soundeffect)
+        binding.setWallpaperButton.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                setWallpaper()
+            }
+            hideBottomSheet()
+        }
         return binding.root
     }
 
@@ -49,9 +65,35 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         })
     }
 
+
+    private fun setWallpaper() {
+        val wallpaper = WallpaperManager.getInstance(this.activity?.applicationContext)
+        try {
+            wallpaper.setBitmap(earthPhoto)
+            mediaPlayer?.start()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun hideBottomSheet() {
+        this.apply {
+            if (isVisible) {
+                dismiss()
+            } else showsDialog
+        }
+    }
+
+
     private fun animateBottomArrow(offset: Float) {
         binding.bottomArrow.rotation = (offset * -180)
         binding.bottomArrow.rotation = (offset * 180)
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
 
     }
 }

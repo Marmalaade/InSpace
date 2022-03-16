@@ -39,7 +39,7 @@ class EarthCameraPhotoFragment : Fragment() {
 
         binding.earthPhoto.setOnClickListener {
             if (bottomSheet == null) {
-                bottomSheet = BottomSheetFragment()
+                bottomSheet = BottomSheetFragment(earthPhoto)
             } else if (bottomSheet!!.isAdded) {
                 return@setOnClickListener
             }

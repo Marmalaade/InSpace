@@ -8,6 +8,7 @@
     <string name="action_text">Select an action</string>
     <string name="share">Share</string>
     <string name="wallpaper">Wallpaper</string>
+    <string name="share_photo">Share photo</string>
 
     <string name="display_type">Opportunity to %s</string>
     <string name="display_price">for %s$</string>

@@ -3,8 +3,10 @@ package com.example.inspace.bottomsheet
 import android.app.WallpaperManager
 import android.content.ContentResolver
 import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -31,6 +33,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
     private var _binding: FragmentBottomSheetBinding? = null
     private val binding get() = _binding!!
     private var mediaPlayer: MediaPlayer? = null
+    private var imageUri: Uri? = null
     override fun getTheme() = R.style.AppBottomSheetDialogTheme
 
     companion object {
@@ -79,6 +82,13 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
 
     private fun sharePhoto() {
         saveImageToGallery(earthPhoto, context!!.contentResolver)
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/jpeg"
+            putExtra(Intent.EXTRA_STREAM, imageUri)
+            Log.e("masd", imageUri.toString())
+        }
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_photo)))
+
     }
 
 
@@ -90,7 +100,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
                 contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Image_" + ".jpg")
                 contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
                 contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + "PictureFolder")
-                val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
                 fos = contentResolver.openOutputStream(Objects.requireNonNull(imageUri)!!)!!
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
                 Objects.requireNonNull<OutputStream?>(fos)
@@ -99,6 +109,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
     }
 
     private fun setWallpaper() {
@@ -110,6 +121,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
             e.printStackTrace()
         }
     }
+
 
     private fun hideBottomSheet() {
         this.apply {

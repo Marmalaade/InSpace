@@ -1,9 +1,14 @@
 package com.example.inspace.bottomsheet
 
 import android.app.WallpaperManager
+import android.content.ContentResolver
+import android.content.ContentValues
 import android.graphics.Bitmap
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +21,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 import java.io.IOException
+import java.io.OutputStream
+import java.util.*
 
 
 class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFragment() {
@@ -36,6 +44,10 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
             CoroutineScope(Dispatchers.IO).launch {
                 setWallpaper()
             }
+            hideBottomSheet()
+        }
+        binding.shareButton.setOnClickListener {
+            sharePhoto()
             hideBottomSheet()
         }
         return binding.root
@@ -65,6 +77,29 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
         })
     }
 
+    private fun sharePhoto() {
+        saveImageToGallery(earthPhoto, context!!.contentResolver)
+    }
+
+
+    private fun saveImageToGallery(bitmap: Bitmap, contentResolver: ContentResolver) {
+        val fos: OutputStream
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val contentValues = ContentValues()
+                contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Image_" + ".jpg")
+                contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + "PictureFolder")
+                val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                fos = contentResolver.openOutputStream(Objects.requireNonNull(imageUri)!!)!!
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                Objects.requireNonNull<OutputStream?>(fos)
+                Log.e("save", "Image saved")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     private fun setWallpaper() {
         val wallpaper = WallpaperManager.getInstance(this.activity?.applicationContext)

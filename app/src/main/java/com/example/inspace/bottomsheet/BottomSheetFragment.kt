@@ -1,7 +1,6 @@
 package com.example.inspace.bottomsheet
 
 import android.app.WallpaperManager
-import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
@@ -16,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.net.toUri
 import com.example.inspace.R
 import com.example.inspace.databinding.FragmentBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -24,16 +24,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
-import java.util.*
 
 
 class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFragment() {
     private var _binding: FragmentBottomSheetBinding? = null
     private val binding get() = _binding!!
     private var mediaPlayer: MediaPlayer? = null
-    private var imageUri: Uri? = null
     override fun getTheme() = R.style.AppBottomSheetDialogTheme
 
     companion object {
@@ -50,7 +49,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
             hideBottomSheet()
         }
         binding.shareButton.setOnClickListener {
-            sharePhoto()
+            sharePhoto(saveImageToGallery(earthPhoto))
             hideBottomSheet()
         }
         return binding.root
@@ -80,37 +79,49 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
         })
     }
 
-    private fun sharePhoto() {
-        saveImageToGallery(earthPhoto, context!!.contentResolver)
+    private fun sharePhoto(imagePath: Uri?) {
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "image/jpeg"
-            putExtra(Intent.EXTRA_STREAM, imageUri)
-            Log.e("masd", imageUri.toString())
+            putExtra(Intent.EXTRA_STREAM, imagePath)
         }
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_photo)))
 
     }
 
+    private fun saveImageToGallery(bitmap: Bitmap): Uri? {
+        val filename = ("EarthPhoto_" + ".jpg")
+        var fos: OutputStream? = null
+        var imageUri: Uri? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            context?.contentResolver?.also { resolver ->
+                val contentValues = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + "EarthPhotos")
+                }
 
-    private fun saveImageToGallery(bitmap: Bitmap, contentResolver: ContentResolver) {
-        val fos: OutputStream
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val contentValues = ContentValues()
-                contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Image_" + ".jpg")
-                contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
-                contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + "PictureFolder")
-                imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-                fos = contentResolver.openOutputStream(Objects.requireNonNull(imageUri)!!)!!
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-                Objects.requireNonNull<OutputStream?>(fos)
-                Log.e("save", "Image saved")
+                imageUri =
+                    resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+                fos = imageUri?.let { resolver.openOutputStream(it) }
+
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        } else {
 
+            val imagesDir =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + File.separator + "EarthPhotos")
+            val image = File(imagesDir, filename)
+            imageUri = image.toUri()
+            fos = FileOutputStream(image)
+
+        }
+        fos?.use {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+
+        }
+        return imageUri
     }
+
 
     private fun setWallpaper() {
         val wallpaper = WallpaperManager.getInstance(this.activity?.applicationContext)

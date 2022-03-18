@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/bottom_sheet_item_space"
+            android:layout_margin="@dimen/normal_space"
             android:src="@drawable/ic_earth"
             app:riv_corner_radius="10dp" />
 

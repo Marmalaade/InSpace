@@ -80,6 +80,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
     }
 
     private fun sharePhoto(imagePath: Uri?) {
+
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "image/jpeg"
             putExtra(Intent.EXTRA_STREAM, imagePath)
@@ -87,6 +88,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_photo)))
 
     }
+
 
     private fun saveImageToGallery(bitmap: Bitmap): Uri? {
         val filename = ("EarthPhoto_" + ".jpg")
@@ -109,7 +111,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
         } else {
 
             val imagesDir =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + File.separator + "EarthPhotos")
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
             val image = File(imagesDir, filename)
             imageUri = image.toUri()
             fos = FileOutputStream(image)

@@ -1,11 +1,15 @@
 package com.example.inspace.earthcameraphoto
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +27,10 @@ class EarthCameraPhotoFragment : Fragment() {
     private val binding get() = _binding!!
     private var bottomSheet: BottomSheetFragment? = null
     private lateinit var earthPhoto: Bitmap
+
+    companion object {
+        private const val STORAGE_PERMISSION_CODE = 101
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +74,7 @@ class EarthCameraPhotoFragment : Fragment() {
                             binding.earthPhoto.setImage(ImageSource.cachedBitmap(earthPhoto))
                         }
                         binding.statusImage.visibility = View.GONE
+                        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
                     }
 
                     override fun onLoadCleared(placeholder: Drawable?) {
@@ -75,6 +84,11 @@ class EarthCameraPhotoFragment : Fragment() {
         }
     }
 
+    private fun checkPermission(permission: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(requireContext(), permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission), requestCode)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -58,7 +58,6 @@ class EarthCameraPhotoFragment : Fragment() {
     }
 
     private fun loadEarthCameraPhoto(binding: FragmentEarthCameraPhotoBinding) {
-
         val url = binding.viewModel?.selectedImageProperties?.value?.getImageUrl()
         url?.let {
             val imgUri = url.toUri().buildUpon().scheme("https")?.build()

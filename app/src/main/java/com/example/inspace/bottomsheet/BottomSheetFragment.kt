@@ -89,7 +89,7 @@ class BottomSheetFragment(private val earthPhoto: Bitmap) : BottomSheetDialogFra
 
     }
 
-
+    @Suppress("DEPRECATION")
     private fun saveImageToGallery(bitmap: Bitmap): Uri? {
         val filename = ("EarthPhoto_" + ".jpg")
         var fos: OutputStream? = null

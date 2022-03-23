@@ -89,4 +89,14 @@ dependencies {
 
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'androidx.activity:activity-ktx:1.4.0'
+//Hilt for dependency
+    implementation 'com.google.dagger:hilt-android:2.31.2-alpha'
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt 'com.google.dagger:hilt-compiler:2.31.2-alpha'
+
+    //Room
+    // Room database
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+
 }

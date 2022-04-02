@@ -8,10 +8,9 @@ import retrofit2.http.Path
 
 private const val BASE_URL = "https://api.nasa.gov/EPIC/api/"
 
-
 interface EarthCameraApiService {
 
-    object apiKey {
+    object ApiKey {
         const val KEY = "g6LnNorzWiIzqiTSmEbEell4AHdfz7w6dDfuOzvb"
     }
 

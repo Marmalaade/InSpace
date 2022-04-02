@@ -42,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/normal_space"
                 android:text="@{String.format(@string/display_type,viewModel.selectedProperty.type)}"
-                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mars_place_photo_image"

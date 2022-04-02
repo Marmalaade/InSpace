@@ -20,7 +20,7 @@ data class EarthCameraPhotoProperty(
             .append(dateComponents[0]).append('/')
             .append(dateComponents[1]).append('/')
             .append(dateComponents[2]).append("/png/")
-            .append(image).append(".png?api_key=").append(EarthCameraApiService.apiKey.KEY)
+            .append(image).append(".png?api_key=").append(EarthCameraApiService.ApiKey.KEY)
         return sb.toString()
     }
 

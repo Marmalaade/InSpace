@@ -22,13 +22,13 @@
 
         <TextView
             android:id="@+id/choose_action_text"
+            style="@style/TextViewPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/normal_space"
             android:text="@string/action_text"
             android:textAllCaps="true"
-            android:textColor="@color/gray"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -46,12 +46,16 @@
             <Button
                 android:id="@+id/share_button"
                 style="@style/BottomSheetCustomButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:layout_marginStart="@dimen/normal_space"
                 android:layout_weight="1"
                 android:text="@string/share"
                 app:icon="@drawable/ic_baseline_share_24" />
 
             <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
                 android:id="@+id/set_wallpaper_button"
                 style="@style/BottomSheetCustomButton"
                 android:layout_marginEnd="@dimen/normal_space"

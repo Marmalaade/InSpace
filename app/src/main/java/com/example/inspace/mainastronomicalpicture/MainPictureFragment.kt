@@ -1,8 +1,11 @@
 package com.example.inspace.mainastronomicalpicture
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.inspace.R
@@ -22,6 +25,7 @@ class MainPictureFragment : Fragment() {
     ): View {
         setHasOptionsMenu(true)
         _binding = FragmentMainPictureBinding.inflate(inflater)
+
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         return binding.root

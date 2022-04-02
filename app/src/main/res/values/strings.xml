@@ -11,7 +11,8 @@
     <string name="share_photo">Share photo</string>
     <string name="display_type">Opportunity to %s</string>
     <string name="display_price">for %s$</string>
-
+    <string name="creator">By Marmalade</string>
+    <string name="parse_color">#2f2f2f</string>
     <string name="first_filter_menu_item">All places</string>
     <string name="second_filter_menu_item">For sale</string>
     <string name="third_filter_menu_item">For rent</string>

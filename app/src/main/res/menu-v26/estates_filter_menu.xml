@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action"
+        android:icon="@drawable/ic_baseline_terrain_24"
+        android:title="@string/terrain"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/show_all"
+                android:icon="@drawable/ic_terrains"
+                android:title="@string/first_filter_menu_item" />
+            <item
+                android:id="@+id/show_buy"
+                android:icon="@drawable/ic_terrains"
+                android:title="@string/second_filter_menu_item" />
+            <item
+                android:id="@+id/show_rent"
+                android:icon="@drawable/ic_terrains"
+                android:title="@string/third_filter_menu_item" />
+        </menu>
+    </item>
+</menu>

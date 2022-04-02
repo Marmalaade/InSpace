@@ -16,12 +16,12 @@
         android:background="@color/black"
         tools:context=".MainActivity>">
 
-
         <ImageView
             android:id="@+id/main_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:layout_marginTop="@dimen/normal_space"
             android:scaleType="centerCrop"
             app:imageUrl="@{viewModel.mainItems.img_url}"
             app:layout_constraintBottom_toTopOf="@+id/status_image"
@@ -51,5 +51,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:marsApiStatus="@{viewModel.status}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

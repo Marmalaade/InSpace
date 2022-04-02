@@ -27,7 +27,8 @@ fun getDatabase(context: Context): MainPictureDatabase {
                 context.applicationContext,
                 MainPictureDatabase::class.java,
                 "main_items_database"
-            ).build()
+            )
+                .build()
         }
     }
     return INSTANCE

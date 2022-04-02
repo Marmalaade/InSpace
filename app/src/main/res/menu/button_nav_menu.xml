@@ -8,6 +8,14 @@
         android:id="@+id/marsEstates"
         android:icon="@drawable/ic_baseline_place_24"
         android:title="@string/mars_photo_item" />
+
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+    <item
+        android:id="@+id/creator"
+        android:icon="@drawable/ic_baseline_android_24"
+        android:title="@string/creator" />
     <item
         android:id="@+id/earthCamera"
         android:icon="@drawable/ic_baseline_camera_24"

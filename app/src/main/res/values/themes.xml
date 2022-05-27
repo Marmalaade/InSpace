@@ -31,13 +31,23 @@
         <item name="android:layout_marginEnd">@dimen/normal_space</item>
     </style>
 
+    <style name="CustomToast">
+        <item name="stIconEnd">@drawable/ic_baseline_icecream_24</item>
+        <item name="android:gravity">center</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stGravity">center</item>
+        <item name="stFont">@font/playfair_display</item>
+        <item name="stTextSize">@dimen/toast_text_size</item>
+        <item name="stColorBackground">@color/gray</item>
+    </style>
+
     <style name="BottomSheetCustomButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconTint">@color/white</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginStart">@dimen/bottom_sheet_item_space</item>
         <item name="android:layout_marginEnd">@dimen/bottom_sheet_item_space</item>
-        <item name="strokeColor">@color/color_lightGray</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
 
     </style>
 

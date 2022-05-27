@@ -7,6 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="color_lightGray">#ECECEC</color>
     <color name="black">#FF000000</color>
-    <color name="gray">	#383838</color>
+    <color name="gray">#383838</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="main_color">#121212</color>
+
+    <array name="confettiColorList">
+        <item>@color/gray</item>
+        <item>@color/color_lightGray</item>
+        <item>@color/black</item>
+        <item>@color/main_color</item>
+    </array>
 </resources>

@@ -13,34 +13,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/main_color"
         tools:context=".MainActivity>">
+
 
         <ImageView
             android:id="@+id/main_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/small_space"
             android:adjustViewBounds="true"
-            android:layout_marginTop="@dimen/normal_space"
             android:scaleType="centerCrop"
             app:imageUrl="@{viewModel.mainItems.img_url}"
-            app:layout_constraintBottom_toTopOf="@+id/status_image"
+            app:layout_constraintBottom_toTopOf="@+id/tittle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <nl.dionsegijn.konfetti.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/tittle"
             style="@style/TextViewPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_space"
+            android:layout_marginTop="@dimen/normal_space"
+            android:layout_marginEnd="@dimen/small_space"
+            android:layout_marginBottom="@dimen/mainPicture_padding"
             android:padding="@dimen/small_space"
             android:text="@{viewModel.mainItems.title}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_picture" />
-
 
         <ImageView
             android:id="@+id/status_image"

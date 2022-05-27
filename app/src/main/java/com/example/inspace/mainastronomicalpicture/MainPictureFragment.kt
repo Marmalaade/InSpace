@@ -1,15 +1,16 @@
 package com.example.inspace.mainastronomicalpicture
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat.getSystemService
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.inspace.R
 import com.example.inspace.databinding.FragmentMainPictureBinding
+import io.github.muddz.styleabletoast.StyleableToast
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 
 class MainPictureFragment : Fragment() {
 
@@ -25,9 +26,16 @@ class MainPictureFragment : Fragment() {
     ): View {
         setHasOptionsMenu(true)
         _binding = FragmentMainPictureBinding.inflate(inflater)
-
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        binding.mainPicture.setOnLongClickListener {
+            confettiAnimation()
+            showCustomToast()
+            binding.mainPicture.isLongClickable = false
+            return@setOnLongClickListener true
+        }
+
         return binding.root
     }
 
@@ -54,6 +62,27 @@ class MainPictureFragment : Fragment() {
             overridePendingTransition(0, 0)
             startActivity(intent)
         }
+    }
+
+    private fun showCustomToast() {
+        activity?.let {
+            StyleableToast.makeText(it.applicationContext, getText(R.string.toast_text).toString(), R.style.CustomToast)
+                .show()
+        }
+    }
+
+    private fun confettiAnimation() {
+        val colorsList = let { resources.getIntArray(R.array.confettiColorList) }.toList()
+        binding.konfettiView.build()
+            .addColors(colorsList)
+            .setDirection(0.0, 180.0)
+            .setSpeed(1f, 5f)
+            .setFadeOutEnabled(true)
+            .setTimeToLive(1000L)
+            .addShapes(Shape.Square, Shape.Circle)
+            .addSizes(Size(10))
+            .setPosition(-50f, binding.konfettiView.width + 50f, -50f, -50f)
+            .streamFor(550, 800L)
     }
 
     override fun onDestroyView() {

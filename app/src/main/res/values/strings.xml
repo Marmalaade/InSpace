@@ -15,6 +15,7 @@
     <string name="parse_color">#2f2f2f</string>
     <string name="first_filter_menu_item">All places</string>
     <string name="second_filter_menu_item">For sale</string>
+    <string name="toast_text">Easter egg found!</string>
     <string name="third_filter_menu_item">For rent</string>
     <string name="terrain">Terrain</string>
 

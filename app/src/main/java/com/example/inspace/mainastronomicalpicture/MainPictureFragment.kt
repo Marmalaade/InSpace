@@ -3,7 +3,6 @@ package com.example.inspace.mainastronomicalpicture
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.inspace.R
@@ -28,7 +27,6 @@ class MainPictureFragment : Fragment() {
         _binding = FragmentMainPictureBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-
         binding.mainPicture.setOnLongClickListener {
             confettiAnimation()
             showCustomToast()
@@ -70,6 +68,7 @@ class MainPictureFragment : Fragment() {
                 .show()
         }
     }
+
 
     private fun confettiAnimation() {
         val colorsList = let { resources.getIntArray(R.array.confettiColorList) }.toList()

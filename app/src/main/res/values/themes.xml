@@ -43,6 +43,7 @@
 
     <style name="BottomSheetCustomButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconTint">@color/white</item>
+        <item name="cornerRadius">@dimen/button_corners_radius</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginStart">@dimen/bottom_sheet_item_space</item>
         <item name="android:layout_marginEnd">@dimen/bottom_sheet_item_space</item>
@@ -53,5 +54,10 @@
 
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_image</item>
+    </style>
+
+    <style name="InfoDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/zoom_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/zoom_out_anim</item>
     </style>
 </resources>

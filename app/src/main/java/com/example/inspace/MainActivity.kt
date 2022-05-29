@@ -1,13 +1,13 @@
 package com.example.inspace
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -21,21 +21,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import nl.dionsegijn.konfetti.KonfettiView
-import nl.dionsegijn.konfetti.models.Shape
-import nl.dionsegijn.konfetti.models.Size
 import java.util.concurrent.TimeUnit
 
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var mainBinding: ActivityMainBinding
 
     private val rotateOpen: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim) }
     private val rotateClose: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
-    private var counter =0
 
+    private var dialogBuilder: AlertDialog? = null
     private var clicked = false
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
@@ -53,8 +50,27 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
         mainBinding.fab.setOnClickListener {
+            if (dialogBuilder == null) {
+                dialogBuilder = AlertDialog.Builder(this).create()
+            }
+            showInfoDialog()
             onFabButtonClicked()
         }
+    }
+
+    private fun showInfoDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.custom_info_dialog, null)
+        val dialogBackButton = dialogView.findViewById<Button>(R.id.back_button)
+        dialogBuilder?.apply {
+            setView(dialogView)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window?.attributes?.windowAnimations = R.style.InfoDialogAnimation
+            setCanceledOnTouchOutside(false)
+        }
+        dialogBackButton.setOnClickListener {
+            dialogBuilder?.dismiss()
+        }
+        dialogBuilder?.show()
     }
 
     private fun fabAnimation(clicked: Boolean) {
@@ -108,7 +124,4 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return findNavController(R.id.nav_host_fragment).navigateUp()
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
-    }
 }

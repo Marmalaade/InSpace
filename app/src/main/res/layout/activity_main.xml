@@ -47,7 +47,7 @@
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_baseline_add_24"
+        android:src="@drawable/ic_baseline_question_mark_24"
         app:layout_anchor="@id/bottom_appBar"
         app:layout_anchorGravity="bottom|center"
         tools:ignore="SpeakableTextPresentCheck" />

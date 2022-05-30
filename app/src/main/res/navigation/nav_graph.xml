@@ -52,5 +52,9 @@
             android:name="selectedImageProperties"
             app:argType="com.example.inspace.properties.EarthCameraPhotoProperty" />
     </fragment>
+    <fragment
+        android:id="@+id/creator"
+        android:name="com.example.inspace.developerinformation.DeveloperInformationFragment"
+        android:label="AboutDeveloper" />
 
 </navigation>

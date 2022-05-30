@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/cardview_background.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/cardview_discord_bg.xml" value="0.21232876712328766" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/cardview_instagram_bg.xml" value="0.21232876712328766" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/custom_button.xml" value="0.11666666666666667" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/custom_cardview_bg.xml" value="0.2111111111111111" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic__1_black_hole.xml" value="0.16123778501628663" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic___jupiter.xml" value="0.16123778501628663" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic___saturn.xml" value="0.16123778501628663" />
@@ -22,9 +25,12 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_bottom_arrow.xml" value="0.1398148148148148" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_broken_image.xml" value="0.175" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_connection_error.xml" value="0.175" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_discord.xml" value="0.21232876712328766" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_earth.xml" value="0.11666666666666667" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_instagram.xml" value="0.21232876712328766" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_mars_icon.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_telegram.xml" value="0.21232876712328766" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_terrain.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_terrains.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/info_dialog_round.xml" value="0.18640350877192982" />
@@ -41,6 +47,7 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_item.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_sheet.xml" value="0.12613981762917933" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.4" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_developer_information.xml" value="0.3026315789473684" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera_photo.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera_photo_list.xml" value="0.1" />

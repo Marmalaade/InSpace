@@ -1,12 +1,13 @@
 package com.example.inspace.earthcameraphotolist
 
+import android.annotation.SuppressLint
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.inspace.network.ApiStatus
 import com.example.inspace.network.EarthCameraApi
+import com.example.inspace.network.IsInternetAvailable
 import com.example.inspace.properties.EarthCameraDateProperty
 import com.example.inspace.properties.EarthCameraPhotoProperty
 import com.example.inspace.util.NoInternetException
@@ -24,6 +25,9 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    @SuppressLint("StaticFieldLeak")
+    private val context = getApplication<Application>().applicationContext
+
     val navigateToSelectedImage: LiveData<EarthCameraPhotoProperty?>
         get() = _navigateToSelectedImage
     val properties: LiveData<List<EarthCameraPhotoProperty>>
@@ -33,7 +37,9 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
 
     init {
         _selectedProperty.value = earthCameraDateProperty
+        if (IsInternetAvailable.isConnected(context)) {
         getEarthCameraPhotoList(_selectedProperty.value!!.date)
+        }
     }
 
     private fun getEarthCameraPhotoList(data: String) {

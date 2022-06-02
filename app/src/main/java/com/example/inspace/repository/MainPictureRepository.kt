@@ -1,5 +1,9 @@
 package com.example.inspace.repository
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.example.inspace.database.MainPictureDatabase
@@ -12,14 +16,17 @@ import kotlinx.coroutines.withContext
 
 class MainPictureRepository(private val database: MainPictureDatabase) {
 
+
     val mainItems: LiveData<MainPictureProperty> = Transformations.map(database.mainPictureDao.getMainScreenItems()) {
         it?.asDomainModel()
     }
 
     suspend fun refreshMainScreenItems() {
+
         withContext(Dispatchers.IO) {
             val mainItems = MainPictureApi.retrofitService.getPropertiesAsync()
             database.mainPictureDao.insertMainScreenItems(mainItems.asDatabaseModel())
         }
+
     }
 }

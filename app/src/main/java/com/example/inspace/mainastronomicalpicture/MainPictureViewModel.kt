@@ -1,5 +1,6 @@
 package com.example.inspace.mainastronomicalpicture
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.inspace.database.getDatabase
 import com.example.inspace.network.ApiStatus
+import com.example.inspace.network.IsInternetAvailable
 import com.example.inspace.repository.MainPictureRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -19,14 +21,19 @@ class MainPictureViewModel(application: Application) : AndroidViewModel(applicat
     private val database = getDatabase(application)
     private val mainPictureRepository = MainPictureRepository(database)
 
+    @SuppressLint("StaticFieldLeak")
+    private val context = getApplication<Application>().applicationContext
+
     val status: LiveData<ApiStatus>
         get() = _status
 
 
     init {
         _status.value = ApiStatus.LOADING
-        viewModelScope.launch {
-            mainPictureRepository.refreshMainScreenItems()
+        if (IsInternetAvailable.isConnected(context)) {
+            viewModelScope.launch {
+                mainPictureRepository.refreshMainScreenItems()
+            }
         }
         _status.value = ApiStatus.DONE
     }

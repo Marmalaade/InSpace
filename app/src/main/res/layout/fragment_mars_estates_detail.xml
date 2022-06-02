@@ -24,7 +24,6 @@
             android:background="@color/main_color"
             android:padding="@dimen/normal_space">
 
-
             <ImageView
                 android:id="@+id/mars_place_photo_image"
                 android:layout_width="0dp"
@@ -37,39 +36,31 @@
 
             <TextView
                 android:id="@+id/property_type_text"
-                style="@style/TextViewPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_space"
                 android:layout_marginTop="@dimen/normal_space"
                 android:text="@{String.format(@string/display_type,viewModel.selectedProperty.type)}"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mars_place_photo_image"
                 tools:text="To Rent" />
 
             <TextView
                 android:id="@+id/price_value_text"
-                style="@style/TextViewPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_space"
                 android:layout_marginTop="@dimen/normal_space"
                 android:text="@{String.format(@string/display_price,viewModel.selectedProperty.price)}"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/property_type_text"
                 tools:text="$999,000" />
 
-            <ImageView
-                android:id="@+id/mars_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/big_vertical_space"
-                android:layout_marginBottom="@dimen/normal_space"
-                android:src="@drawable/ic_mars_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/price_value_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -10,13 +10,13 @@ import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -79,7 +79,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showNoInternetConnectionSnackBar() {
+        val snackBar = Snackbar.make(mainBinding.mainLayout, "", Snackbar.LENGTH_LONG)
+        val customSnackView = layoutInflater.inflate(R.layout.custom_snackbar, null)
+        snackBar.view.setBackgroundColor(Color.TRANSPARENT)
 
+        val snackBarLayout = snackBar.view as Snackbar.SnackbarLayout
+        val params = snackBar.view.layoutParams as CoordinatorLayout.LayoutParams
+        params.gravity = Gravity.TOP
+        snackBar.view.layoutParams = params
+
+        snackBarLayout.apply {
+            setPadding(0, 0, 0, 0)
+            addView(customSnackView, 0)
+
+        }
+        snackBar.show()
     }
 
 

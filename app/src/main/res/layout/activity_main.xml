@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -16,6 +17,19 @@
         android:layout_marginBottom="?android:attr/actionBarSize"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_question_mark_24"
+        app:layout_anchor="@id/bottom_appBar"
+        app:layout_anchorGravity="bottom|center"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_appBar"
@@ -39,18 +53,6 @@
             app:menu="@menu/button_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_baseline_question_mark_24"
-        app:layout_anchor="@id/bottom_appBar"
-        app:layout_anchorGravity="bottom|center"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

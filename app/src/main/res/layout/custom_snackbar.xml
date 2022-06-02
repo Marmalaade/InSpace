@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/snackBar_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_space"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/gray"
+        app:cardCornerRadius="@dimen/normal_space"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="@dimen/small_space"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_baseline_signal_wifi_connected_no_internet_4_24" />
+
+            <TextView
+                android:id="@+id/internet_connection"
+                style="@style/TextViewPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageView"
+                android:text="@string/internet_connection_text"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/internet_connection"
+                android:layout_marginStart="@dimen/normal_space"
+                android:layout_marginEnd="@dimen/normal_space"
+                android:layout_toEndOf="@id/imageView"
+                android:text="@string/check_internet_text"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

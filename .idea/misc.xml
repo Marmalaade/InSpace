@@ -20,6 +20,7 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_rocket_launch_24.xml" value="0.14351851851851852" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.11666666666666667" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_shield_moon_24.xml" value="0.18640350877192982" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_signal_wifi_connected_no_internet_4_24.xml" value="0.24074074074074073" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_terrain_24.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_baseline_wallpaper_24.xml" value="0.11666666666666667" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/drawable/ic_bottom_arrow.xml" value="0.1398148148148148" />
@@ -42,13 +43,13 @@
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/activity_splash_screen.xml" value="0.17300724637681159" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/custom_info_dialog.xml" value="0.2" />
-        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/custom_snackbar.xml" value="0.536" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/custom_snackbar.xml" value="0.264" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/custom_toast.xml" value="0.16111111111111112" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/custon_toast.xml" value="0.4" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_item.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/date_sheet.xml" value="0.12613981762917933" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.4" />
-        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_developer_information.xml" value="0.3026315789473684" />
+        <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_developer_information.xml" value="0.4" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera_photo.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/InSpace/app/src/main/res/layout/fragment_earth_camera_photo_list.xml" value="0.1" />

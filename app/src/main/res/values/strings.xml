@@ -12,6 +12,8 @@
     <string name="display_type">Opportunity: %s</string>
     <string name="display_price">Price: %s$</string>
     <string name="instagram">Instagram</string>
+    <string name="internet_connection_text">Internet not available!</string>
+    <string name="check_internet_text">Check your network connection</string>
     <string name="marmalade">Marmalade</string>
     <string name="discord">Discord</string>
     <string name="telegram">Telegram</string>

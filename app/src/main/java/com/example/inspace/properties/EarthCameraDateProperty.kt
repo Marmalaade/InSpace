@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 data class EarthCameraDateProperty(
     val date: String
-):Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString()!!) {
     }
 

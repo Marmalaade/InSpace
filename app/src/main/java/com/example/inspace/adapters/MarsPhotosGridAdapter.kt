@@ -34,7 +34,7 @@ class MarsPhotosGridAdapter(private val onClickListener: OnClickListener) :
 
     override fun onBindViewHolder(holder: MarsPhotosGridAdapter.MarsPropertyViewHolder, position: Int) {
         val marsProperty = getItem(position)
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClickListener.onClick(marsProperty)
         }
         holder.bind(marsProperty)

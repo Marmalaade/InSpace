@@ -46,7 +46,7 @@
             <Button
                 android:id="@+id/share_button"
                 style="@style/BottomSheetCustomButton"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="@dimen/normal_space"
                 android:layout_weight="1"
@@ -54,7 +54,7 @@
                 app:icon="@drawable/ic_baseline_share_24" />
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/button_height"
                 android:id="@+id/set_wallpaper_button"
                 style="@style/BottomSheetCustomButton"

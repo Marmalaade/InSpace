@@ -16,7 +16,6 @@ import kotlinx.coroutines.withContext
 
 class MainPictureRepository(private val database: MainPictureDatabase) {
 
-
     val mainItems: LiveData<MainPictureProperty> = Transformations.map(database.mainPictureDao.getMainScreenItems()) {
         it?.asDomainModel()
     }

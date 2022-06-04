@@ -3,7 +3,6 @@ package com.example.inspace.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.inspace.properties.MainPictureProperty
-import javax.annotation.Nullable
 
 @Entity
 data class DatabaseEntities constructor(

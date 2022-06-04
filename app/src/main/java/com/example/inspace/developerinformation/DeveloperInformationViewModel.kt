@@ -1,14 +1,9 @@
 package com.example.inspace.developerinformation
 
 import android.app.Application
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 class DeveloperInformationViewModel(application: Application) : AndroidViewModel(application) {
 

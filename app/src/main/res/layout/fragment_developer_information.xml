@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -31,8 +30,7 @@
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{()->viewModel.onInstagramCardViewCLick()}"
-
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="@dimen/small_space">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +111,7 @@
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{()->viewModel.onTelegramCardViewCLick()}"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="@dimen/small_space">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -195,7 +193,7 @@
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{()->viewModel.onDiscordCardViewCLick()}"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="@dimen/small_space">
 
                 <LinearLayout
                     android:layout_width="match_parent"

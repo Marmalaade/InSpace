@@ -38,7 +38,7 @@ class EarthCameraPhotoListViewModel(earthCameraDateProperty: EarthCameraDateProp
     init {
         _selectedProperty.value = earthCameraDateProperty
         if (IsInternetAvailable.isConnected(context)) {
-        getEarthCameraPhotoList(_selectedProperty.value!!.date)
+            getEarthCameraPhotoList(_selectedProperty.value!!.date)
         }
     }
 

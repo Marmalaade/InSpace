@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.inspace.adapters.EarthCameraPhotosAdapter
 import com.example.inspace.databinding.FragmentEarthCameraPhotoListBinding
-import com.example.inspace.earthcamera.EarthCameraFragmentDirections
 
 class EarthCameraPhotoListFragment : Fragment() {
 

@@ -24,11 +24,12 @@
             android:background="@color/main_color"
             android:padding="@dimen/normal_space">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/mars_place_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
                 android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/RoundedImageView"
                 app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

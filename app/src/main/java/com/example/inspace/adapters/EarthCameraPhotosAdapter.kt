@@ -2,12 +2,10 @@ package com.example.inspace.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inspace.databinding.PhotoItemBinding
-import com.example.inspace.properties.EarthCameraDateProperty
 import com.example.inspace.properties.EarthCameraPhotoProperty
 
 class EarthCameraPhotosAdapter(private val onClickListener: EarthCameraPhotosAdapter.OnClickListener) :

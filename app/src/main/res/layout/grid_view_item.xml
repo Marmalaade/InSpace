@@ -10,12 +10,13 @@
             type="com.example.inspace.properties.MarsProperty" />
     </data>
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/mars_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:padding="2dp"
         android:scaleType="centerCrop"
-        app:imageUrl="@{property.imgSrcUrl}" />
+        app:imageUrl="@{property.imgSrcUrl}"
+        app:shapeAppearanceOverlay="@style/RoundedImageView" />
 </layout>

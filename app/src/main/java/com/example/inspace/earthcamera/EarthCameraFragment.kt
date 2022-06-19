@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.inspace.adapters.EarthCameraDatesAdapter
+import com.example.inspace.adapter.EarthCameraDatesAdapter
 import com.example.inspace.databinding.FragmentEarthCameraBinding
 
 class EarthCameraFragment : Fragment() {

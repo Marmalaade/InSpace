@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.inspace.R
-import com.example.inspace.adapters.MarsPhotosGridAdapter
+import com.example.inspace.adapter.MarsPhotosGridAdapter
 import com.example.inspace.databinding.FragmentMarsEstateBinding
 import com.example.inspace.network.MarsApiFilter
 

@@ -16,6 +16,10 @@
     <string name="check_internet_text">Check your network connection</string>
     <string name="marmalade">Marmalade</string>
     <string name="discord">Discord</string>
+    <string name="channel_name">Space notification channel</string>
+    <string name="channel_description">Notification channel for long user inactivity</string>
+    <string name="notification_text">Dear friend! Spaceships cannot exist without their pilots… Join us soon!</string>
+    <string name="notification_tittle">We\'ve been waiting for you!</string>
     <string name="telegram">Telegram</string>
     <string name="instagram_link">https://www.instagram.com/marmallaade/</string>
     <string name="telegram_link">https://t.me/Marmalllade</string>

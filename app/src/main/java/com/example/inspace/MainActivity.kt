@@ -1,6 +1,6 @@
 package com.example.inspace
 
-import android.app.AlertDialog
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -9,11 +9,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.Gravity
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.Button
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -23,12 +25,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.work.*
 import com.example.inspace.databinding.ActivityMainBinding
+import com.example.inspace.receiver.Notification
 import com.example.inspace.work.RefreshDataWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -44,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     private var clicked = false
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_InSpace)
@@ -57,12 +62,55 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(R.id.mainPicture, R.id.marsEstates, R.id.earthCamera, R.id.creator))
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
+        createNotificationChannel()
+        scheduleNotification()
+
         mainBinding.fab.setOnClickListener {
             if (dialogBuilder == null) {
                 dialogBuilder = AlertDialog.Builder(this).create()
             }
             showInfoDialog()
             onFabButtonClicked()
+        }
+    }
+
+    private fun scheduleNotification() {
+
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        val notIntent = Intent(this, Notification::class.java)
+        val notPendingIntent = PendingIntent.getBroadcast(
+            this,
+            Notification.REQUEST_CODE,
+            notIntent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar[Calendar.HOUR_OF_DAY] = Notification.TRIGGER_TIME
+
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY * 7, notPendingIntent
+        )
+
+    }
+
+
+    private fun createNotificationChannel() {
+        if (SDK_INT >= Build.VERSION_CODES.O) {
+            val name = getString(R.string.channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(Notification.CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+                lightColor = Color.WHITE
+                vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
+                enableLights(true)
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 
@@ -101,6 +149,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         registerReceiver(broadcastReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -142,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecurringWork() {
         val workerConstraints = Constraints.Builder()
             .apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (SDK_INT >= Build.VERSION_CODES.M) {
                     setRequiresDeviceIdle(true)
                 }
             }
